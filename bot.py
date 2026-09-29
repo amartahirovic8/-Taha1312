@@ -229,5 +229,12 @@ async def clear_cmd(ctx, broj: int):
     await ctx.channel.purge(limit=broj + 1)
     await ctx.send(f"🧹 Obrisano {broj} poruka.", delete_after=5)
 
-# POKRETANJE BOTA
-bot.run("MTQwNDI5MDMyMTQyNDA1NjM1MQ.GZd5s3.2wzTF_mjSo5siujMhhsv3g0HNOx2Pst8C7L04A")
+import os
+
+# Povlačenje tokena iz Render Environment Variables
+TOKEN = os.getenv("DISCORD_TOKEN")
+
+if TOKEN:
+    bot.run(TOKEN)
+else:
+    print("❌ GREŠKA: DISCORD_TOKEN nije definisan u Environment Variables!")
